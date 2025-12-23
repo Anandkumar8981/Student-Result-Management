@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Faculty - Student Result Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-title">Faculty Dashboard</div>
+    <ul class="navbar-menu">
+      <li><a href="#" onclick="showSection('enterMarks')">Add Marks</a></li>
+      <li><a href="#" onclick="showSection('viewMarks')">View / Edit Marks</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- ADD MARKS -->
+    <div id="enterMarks" class="section">
+      <h2>Add Student Marks</h2>
+
+      <label>Branch</label>
+      <select id="branch" onchange="updateSubjects()">
+        <option value="">Select Branch</option>
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+        <option value="ME">ME</option>
+        <option value="CE">CE</option>
+      </select>
+
+      <label>Semester</label>
+      <input id="sem" type="number" min="1" max="8" onchange="updateSubjects()">
+
+      <label>Subject</label>
+      <select id="subject">
+        <option value="">Select Subject</option>
+      </select>
+
+      <label>Student Name</label>
+      <input id="studentName">
+
+      <label>USN</label>
+      <input id="usn">
+
+      <label>Marks</label>
+      <input id="marks" type="number" min="0" max="100">
+
+      <div style="margin-top:10px;display:flex;gap:10px">
+        <button onclick="addMarks()">Upload Marks</button>
+        <button onclick="clearForm()">Clear</button>
+      </div>
+    </div>
+
+    <!-- VIEW / SEARCH / EDIT -->
+    <div id="viewMarks" class="section hidden">
+      <h2>View / Edit / Delete Marks</h2>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+        <input id="facultySearchUSN" placeholder="Search by USN" oninput="searchFacultyAdvanced()">
+
+        <select id="facultyBranch" onchange="searchFacultyAdvanced()">
+          <option value="">All Branches</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="ME">ME</option>
+          <option value="CE">CE</option>
+        </select>
+
+        <select id="facultySem" onchange="searchFacultyAdvanced()">
+          <option value="">All Semesters</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option>
+        </select>
+
+        <button onclick="refreshFaculty()">Refresh</button>
+      </div>
+
+      <div id="marksList"></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

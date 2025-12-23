@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-title">Student Result Management</div>
+    <ul class="navbar-menu">
+      <li><a href="#" onclick="showSection('checkResult')">Check Result</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div id="checkResult" class="section">
+      <h2>Check Your Result</h2>
+      <label>Branch</label>
+      <select id="branch_student" onchange="updateSubjectsForStudent()">
+        <option value="">Select Branch</option>
+        <option value="CSE">CSE</option><option value="ECE">ECE</option><option value="ME">ME</option><option value="CE">CE</option>
+      </select>
+
+      <label>USN</label><input id="usn_student" />
+      <label>Semester</label><input id="sem_student" type="number" min="1" max="8" onchange="updateSubjectsForStudent()" />
+
+      <div style="margin-top:10px;display:flex;gap:10px">
+        <button onclick="checkResult()">Check Result</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+      </div>
+
+      <label>Filter by Subject</label>
+      <select id="subjectFilter" onchange="checkResult()"><option value="">All Subjects</option></select>
+
+      <div id="resultDisplay" class="readonly-report" style="margin-top:12px"></div>
+    </div>
+  </div>
+
+  <!-- jsPDF for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

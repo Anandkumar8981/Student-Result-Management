@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Student Result Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-title">Admin Dashboard</div>
+    <ul class="navbar-menu">
+      <li><a href="#" onclick="showSection('reports')">Reports</a></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div id="reports" class="section">
+      <div class="top-row">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <select id="adminBranch">
+            <option value="">All Branches</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="ME">ME</option>
+            <option value="CE">CE</option>
+          </select>
+
+          <select id="adminSem">
+            <option value="">All Semesters</option>
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+            <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+          </select>
+
+          <select id="adminSubject"><option value="">All Subjects</option></select>
+
+          <input id="adminSearch" placeholder="Search name or USN" />
+          <button onclick="filterAdmin()">Filter</button>
+        </div>
+
+        <div style="display:flex;gap:8px">
+          <button onclick="exportAllCSV()">Export CSV</button>
+          <button onclick="refreshAdmin()">Refresh</button>
+        </div>
+      </div>
+
+      <div id="adminResults" style="margin-top:16px"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

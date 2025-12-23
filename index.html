@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Student Result Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h1>Student Result System</h1>
+      <form id="loginForm">
+        <label>Username</label>
+        <input id="username" required />
+        <label>Password</label>
+        <input id="password" type="password" required />
+        <label>Role</label>
+        <select id="role" required>
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <!-- optional: branch select stored to localStorage for convenience -->
+        <label>Default Branch (optional)</label>
+        <select id="branch">
+          <option value="">--</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="ME">ME</option>
+          <option value="CE">CE</option>
+        </select>
+
+        <button type="submit">Login</button>
+      </form>
+      <p id="error" class="error"></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
